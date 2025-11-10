@@ -24,3 +24,53 @@ def print_next_date(date):
 
 
 print(print_next_date(28102025))
+
+
+def arange_digits(num):
+    """bulding 2 string that represent odd and even numbers"""
+    evenstr = ""
+    oddStr= ""
+    """casting the input number into string"""
+    number = str(num)
+    """go trow the number string and sort for even and odd number to the correct string"""
+    for n in number:
+        digit = int(n)
+        if(digit % 2 == 0):
+            evenstr += n
+        else:
+            oddStr += n
+    """build a sorted string whene even numbers are first"""        
+    new_num = evenstr + oddStr
+    """casting the string into int"""
+    return int(new_num)
+print(arange_digits(1234567))
+
+#task3
+"""check if a given number in range is prime or not"""
+def is_prime(num):
+    for n in range(2, num + 1):
+        if( num % n == 0):
+            return False
+        return True
+""""if the number is prime it will print it"""
+def print_prime_numbers(min, max):
+    for n in range(min,max+1):
+        if(is_prime(n) == True):
+            print(n)
+
+#print_prime_numbers(100, 200)
+
+#task4
+def print_figure(size):
+    for space in range(1, ((size +1)//2)+1):
+        if(space == (size+1)// 2):
+            print("*")
+        else:
+            print(end="  ")
+    
+    if( size >= 3 and size <= 13):
+        for n in range(1, size +1):
+            for i in range(1, n+1):
+                print("*" , i, end= "")
+            print(" *")
+print_figure(3)
