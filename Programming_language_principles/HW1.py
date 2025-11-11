@@ -153,12 +153,23 @@ def count_digits( n ):
    else:
        return 1 + count_digits(n // 10)
 def max_digit( n ):
-    if(count_digits(n) == 1):
+    if(n < 10):
         return n
-def num_weight( n ):
-    pass
+    
+    last = n % 10
+    rest = max_digit(n // 10)
 
-print(count_digits( 351 ))
+    if(last > rest):
+        return last
+    else:
+        return rest
+
+def num_weight( n ):
+    if (n < 10):
+        return n + 1
+    else:
+        return count_digits(n) + max_digit(n)
+
 # --------------------------------------------
 '''
 >>> count_digits( 351 )
@@ -176,7 +187,13 @@ print(count_digits( 351 ))
 #                   Q6
 # --------------------------------------------
 def is_power2( n ):
-    pass
+    if(n == 2):
+        return True
+    if(n % 2 == 0):
+        return is_power2(n // 2)
+    else:
+        return False
+
 # --------------------------------------------
 '''
 >>> is_power2( 1024 )
@@ -188,7 +205,27 @@ False
 #                   Q7
 # --------------------------------------------
 def reduce( n ):
-    pass
+    
+    if(n < 0):
+        sign = -1
+    else:
+        sign = 1
+    n = abs(n)
+
+    if n < 10:
+        return sign * n if n != 0 else 0
+    
+        
+    last_num = n % 10
+    rest_num = reduce(n // 10)
+
+    if(last_num == 0):
+        red = rest_num
+    else:
+        red = rest_num * 10 + last_num
+
+    return red * sign
+
 # ------------------------------------------------
 '''
 >>> reduce( -160760 )
@@ -201,7 +238,13 @@ def reduce( n ):
 #                   Q8
 # --------------------------------------------
 def pascal( n, m ):
-    pass
+    if (m > n):
+        return -1
+    if (m == 0 or m == n):
+        return 1
+    return pascal(n -1, m -1) + pascal(n -1, m)
+
+
 # ------------------------------------------------
 '''
 >>> pascal( 5, 1 )
@@ -255,6 +298,7 @@ def main( ):
     print( pascal( 5, 3 ), end = ', ')
     print( pascal( 5, 2 ), end = ', ')
     print( pascal( 5, 13 ) )
+    
 
 # --------------------------------------------
 '''
