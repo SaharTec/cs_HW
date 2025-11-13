@@ -1,10 +1,11 @@
 # --------------------------------------------
 #                   Q1
 # --------------------------------------------
+# cheack if a given year is a leap year
 def is_leap_year( year ):
     if((year % 4 == 0 and year % 100 != 0) or year % 400 == 0):
             return True
-    
+#return the last day of each month   
 def is_last_day( d, m, y ):
      if m in [1, 3, 5, 7, 8, 10, 12]:
         return 31
@@ -12,7 +13,7 @@ def is_last_day( d, m, y ):
         return 30
      elif m == 2:
         return 29 if is_leap_year(y) else 28
-
+#print the next day of the given date
 def print_next_date( date ):
     d = int(date / 1000000)
     m = int((date / 10000) % 100)
@@ -87,19 +88,25 @@ Number 5713 after arange digits: 5713
 # --------------------------------------------
 #                   Q3
 # --------------------------------------------
-""""if the number is prime it will print it"""
+#if the number is prime it will print it
 def print_prime_numbers( ):
     min, max = 100 , 200
     print("Prime numbers [100,200]: ", end="")
     for n in range(min,max+1):
-        if(is_prime(n) == True):
+        if is_prime(n) == True:
             print(n , end=",")
-    """check if a given number in range is prime or not"""
+    #check if a given number in range is prime or not
+
 def is_prime(num):
-    for n in range(2, num + 1):
-        if( num % n == 0):
-            return False
-        return True
+    #Check if a given number is prime or not.
+    if num <= 1:
+        return False
+    # Check for divisibility from 2 up to the square root of num
+    for n in range(2, int(num**0.5) + 1):
+        if num % n == 0:
+            return False  # Found a divisor, so it's not prime.
+    
+    return True  # Only returns True if the loop finishes without returning False.
 
     
 # --------------------------------------------
@@ -111,16 +118,17 @@ Prime numbers [100,200]: 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 
 # --------------------------------------------
 #                   Q4
 # --------------------------------------------
+#print a parmid base on given size 
 def print_figure( n ):
     width = 2 * n + 1
     print("*".center(width))
-
+    #print * to each row
     for num in range(1, n):
         line = "*"
-
+        #add all the number between 1 and n an upper order
         for i in range(1 ,num + 1):
             line += str(i)
-        
+        #add all the number between 1 and n an lower order
         for i in range(num - 1, 0, -1):
             line += str(i)
 
@@ -147,11 +155,13 @@ def print_figure( n ):
 # --------------------------------------------
 #                   Q5
 # --------------------------------------------
+#count the amount of values in a number
 def count_digits( n ):
    if (n < 10):
        return 1
    else:
        return 1 + count_digits(n // 10)
+# find the largest max digit in the number
 def max_digit( n ):
     if(n < 10):
         return n
@@ -163,7 +173,7 @@ def max_digit( n ):
         return last
     else:
         return rest
-
+# add the amount of digits in the number and add to it the max digit
 def num_weight( n ):
     if (n < 10):
         return n + 1
@@ -186,6 +196,7 @@ def num_weight( n ):
 # --------------------------------------------
 #                   Q6
 # --------------------------------------------
+#cheack if a number is a pow of 2
 def is_power2( n ):
     if(n == 2):
         return True
@@ -204,8 +215,9 @@ False
 # --------------------------------------------
 #                   Q7
 # --------------------------------------------
+#remove all the 0 in a number
 def reduce( n ):
-    
+    #if the number is negetive we set the sinh to -1 to make the new number also negetive
     if(n < 0):
         sign = -1
     else:
@@ -215,7 +227,7 @@ def reduce( n ):
     if n < 10:
         return sign * n if n != 0 else 0
     
-        
+    # remove all the 0    
     last_num = n % 10
     rest_num = reduce(n // 10)
 
@@ -223,7 +235,7 @@ def reduce( n ):
         red = rest_num
     else:
         red = rest_num * 10 + last_num
-
+    #retuen the new number without 0
     return red * sign
 
 # ------------------------------------------------
@@ -237,6 +249,7 @@ def reduce( n ):
 # --------------------------------------------
 #                   Q8
 # --------------------------------------------
+#return a value of of a given row and col in pascal  
 def pascal( n, m ):
     if (m > n):
         return -1
@@ -342,3 +355,4 @@ True, False
 <<< Q#8 >>>
 5, 3, 210, 10, 10, -1
 '''
+main()

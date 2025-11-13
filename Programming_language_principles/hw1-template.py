@@ -96,7 +96,7 @@ def print_prime_numbers( ):
             print(n , end=",")
     """check if a given number in range is prime or not"""
 def is_prime(num):
-    for n in range(2, num + 1):
+    for n in range(2, int(num**0.5) + 1):
         if( num % n == 0):
             return False
         return True
