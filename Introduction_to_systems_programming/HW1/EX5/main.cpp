@@ -17,15 +17,16 @@ int main() {
         numbers.push_back(num);
     }
     
-    // חישוב והצגת ממוצע
+    // חישוב והדפסת הממוצע
     double avg = MathUtils::getAverage(numbers);
-    std::cout << std::fixed << std::setprecision(1);
-    std::cout << "Average: " << avg << std::endl;
+    std::cout << "Average: " << std::fixed << std::setprecision(1) << avg << std::endl;
     
-    // הצגת מספרים ראשוניים
+    // הדפסת מספרים ראשוניים
+    std::cout << "Prime numbers: ";
     MathUtils::printPrimes(numbers);
     
-    // הצגת מספרים מושלמים
+    // הדפסת מספרים מושלמים
+    std::cout << "Perfect numbers: ";
     MathUtils::printPerfectNumbers(numbers);
     
     return 0;

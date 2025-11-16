@@ -1,6 +1,7 @@
 
-#include "mathutils.h"
 #include <iostream>
+#include <vector>
+#include <numeric> 
 #include <cmath>
 
 namespace MathUtils {
@@ -9,16 +10,15 @@ namespace MathUtils {
     bool isPrime(int num){
         if(num <= 1) return false;
         if(num == 2) return true;
-        if(num > 2){
-            
-            for(int i  = 3 ; i <= sqrt(num); i +=2){
-                if(num % i == 0)return false;
-            }return true;
+        if(num % 2 == 0) return false;
+        for(int i = 3; i * i <= num; i += 2){ 
+            if(num % i == 0) return false;
         }
+        return true;
     }
 
     //בדיקת מספר מושלם
-    bool isperfectNum(int num){
+    bool printPerfectNumbers(int num){
         if(num <= 1) return false;
 
         int sum = 0;
@@ -32,7 +32,7 @@ namespace MathUtils {
     }
 
     //בדיקת ממוצע
-    double average(const std::vector<int>& numbers){
+    double getAverage(const std::vector<int>& numbers){
         if(numbers.empty()) return 0.0;
 
         int sum = 0;
@@ -42,8 +42,8 @@ namespace MathUtils {
         return double(sum) / numbers.size();
     }
 
-    void printPrime(const std:: vector<int>& numbers){
-        std::cout <<"prime numbers";
+    void printPrimes(const std:: vector<int>& numbers){
+        std::cout <<"prime numbers: ";
 
         bool foundPrime = false;
         for(int num : numbers){
@@ -59,18 +59,18 @@ namespace MathUtils {
         std::cout << std::endl;
     }
 
-    void printPerfectNum(const std:: vector<int>& numbers){
-        std::cout <<"perfect numbers";
-
-        bool foundPerfect = false;
-        for(int num : numbers){
-            if(isperfectNum(num)){
-                if (foundPerfect) std::cout << " ";
+    void printPerfectNumbers(const std::vector<int>& numbers) {
+        bool foundAny = false;
+        for (int num : numbers) {
+            if (printPerfectNumbers(num)) {
+                if (foundAny) {
+                    std::cout << " ";
+                }
                 std::cout << num;
-                foundPerfect = true;
+                foundAny = true;
             }
         }
-        if (!foundPerfect) {
+        if (!foundAny) {
             std::cout << "None";
         }
         std::cout << std::endl;
