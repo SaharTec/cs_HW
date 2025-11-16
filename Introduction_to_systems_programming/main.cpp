@@ -37,4 +37,21 @@ int main(int argc, char* argv[]) {
 
     delete[] filtered;
 
+
+    ////////////////////////// MAIN FOR QUESTION 4 //////////////////////////
+
+    cout << "================== Question 4 ==================\n" << endl;
+
+    const int MAX_LENGTH = 1000;
+    char input[MAX_LENGTH];
+
+    cout << "Enter a string: ";
+    cin.ignore();
+    cin.getline(input, MAX_LENGTH);
+
+    reverseAndCapitalize(input);
+
+    cout << "Modified string: " << input << endl;
+
+    return 0;
 }

@@ -3,10 +3,7 @@
 #include <cstring>
 #include <cctype> 
 
-/**
- * Q1
- */
-
+// QUESION 1:
  bool isVowel(char c){
     return (c == 'a' || c == 'e' || c == 'o' || c == 'i' || c == 'u');
 }
@@ -44,16 +41,14 @@ char* duplicateVowels(const char* str){
     return new_str;
 }
 
-/**
- * Q2
- */
+// QUESION 2:
 void printArray(const int* arr, int size){
     if(size <= 0){
         cout << "[]" << endl;
         return;
     }
     cout << "[";
-    for(int i = 0; i < size ; i++){
+    for(int i = 0; i < size ; ++i){
         if( i <= size -1 ){
             cout << arr[i] << (i == size - 1 ? "" : ", ");
         }
@@ -63,7 +58,7 @@ void printArray(const int* arr, int size){
 int* filterAboveThreshold(const int* arr, int size, int threshold, int& newSize){
     newSize = 0;
     
-    for(int i = 0; i < size; i++){ 
+    for(int i = 0; i < size; ++i){ 
         if(arr[i] > threshold){
             newSize++;
         }
@@ -72,10 +67,53 @@ int* filterAboveThreshold(const int* arr, int size, int threshold, int& newSize)
     int* filterd = new int[newSize]; 
     int j = 0;
     
-    for(int i = 0; i < size; i++){ 
+    for(int i = 0; i < size; ++i){ 
         if(arr[i] > threshold){
             filterd[j++] = arr[i];
         }
     }
     return filterd;
+}
+
+
+// QUESION 3:
+void readVector(vector<int>& vec){
+    cout << "Enter " << vec.size() << " integers: ";
+    for(int i = 0 ; i < vec.size() ; i++){
+        cin >> vec[i];
+    }
+    cin.ignore(10000, '\n');
+}
+void modifyVector(vector<int>& vec){
+
+    for (int i = 1; i < vec.size(); i++){
+        vec[i] = vec[i] + vec[i-1];
+    }
+
+    for(int x : vec){
+        cout << x << ",";
+    }
+    cout << endl;
+}
+
+// QUESION 4: 
+void reverseAndCapitalize(char* str){
+    if( str == nullptr || str[0] == '\0') return;
+    
+    int len = strlen(str);
+
+    for(int i = 0; i < len / 2; i++){
+        char temp = str[i];
+        str[i] = str[len - 1 - i];
+        str[len - 1 - i] = temp;
+    }
+
+    for(int i = 0; i < len; i++){
+        if (islower(str[i])) {
+            str[i] = toupper(str[i]);
+        } else if (isupper(str[i])) {
+            str[i] = tolower(str[i]);
+        }
+    }
+
 }
