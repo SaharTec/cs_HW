@@ -2,31 +2,32 @@
 #include <vector>
 #include <iomanip>
 #include "mathutils.h"
+using namespace std;
 
 int main() {
     int n;
-    std::cout << "Enter number of elements: ";
-    std::cin >> n;
+    cout << "Enter number of elements: ";
+    cin >> n;
     
-    std::vector<int> numbers;
-    std::cout << "Enter " << n << " integers:" << std::endl;
+    vector<int> numbers;
+    cout << "Enter " << n << " integers:" << endl;
     
     for (int i = 0; i < n; i++) {
         int num;
-        std::cin >> num;
+        cin >> num;
         numbers.push_back(num);
     }
     
     // חישוב והדפסת הממוצע
     double avg = MathUtils::getAverage(numbers);
-    std::cout << "Average: " << std::fixed << std::setprecision(1) << avg << std::endl;
+    cout << "Average: " << fixed << setprecision(1) << avg << endl;
     
     // הדפסת מספרים ראשוניים
-    std::cout << "Prime numbers: ";
+    cout << "Prime numbers: ";
     MathUtils::printPrimes(numbers);
     
     // הדפסת מספרים מושלמים
-    std::cout << "Perfect numbers: ";
+    cout << "Perfect numbers: ";
     MathUtils::printPerfectNumbers(numbers);
     
     return 0;

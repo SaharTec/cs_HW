@@ -37,6 +37,25 @@ int main(int argc, char* argv[]) {
 
     delete[] filtered;
 
+     ////////////////////////// MAIN FOR QUESTION 3 //////////////////////////
+
+    cout << "================== Question 3 ==================\n" << endl;
+
+    if (argc < 2) {
+        cerr << "Usage: " << argv[0] << " <n>" << endl;
+        return 1;
+    }
+
+    int n = stoi(argv[1]);
+    if (n <= 0) {
+        cerr << "Error: n must be positive." << endl;
+        return 1;
+    }
+
+    vector<int> arr(n);
+    readVector(arr);
+    modifyVector(arr);
+
 
     ////////////////////////// MAIN FOR QUESTION 4 //////////////////////////
 

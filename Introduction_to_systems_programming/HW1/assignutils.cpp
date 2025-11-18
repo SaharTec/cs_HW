@@ -1,7 +1,9 @@
 #include "assignutils.h" 
 #include <iostream>
 #include <cstring>
+#include <vector>
 #include <cctype> 
+using namespace std;
 
 // QUESION 1:
  bool isVowel(char c){
@@ -78,22 +80,28 @@ int* filterAboveThreshold(const int* arr, int size, int threshold, int& newSize)
 
 // QUESION 3:
 void readVector(vector<int>& vec){
-    cout << "Enter " << vec.size() << " integers: ";
+    
+    cout << "Enter " << vec.size() << " integers:" << endl;
     for(int i = 0 ; i < vec.size() ; i++){
         cin >> vec[i];
     }
-    cin.ignore(10000, '\n');
+
 }
 void modifyVector(vector<int>& vec){
+    int prev = vec[0];
 
-    for (int i = 1; i < vec.size(); i++){
-        vec[i] = vec[i] + vec[i-1];
+    for(int i = 1; i < vec.size(); i++){
+        int curr = vec[i];
+        vec[i] = prev + vec[i];
+        prev = curr;
     }
 
-    for(int x : vec){
-        cout << x << ",";
+    for(int i = 0; i < vec.size(); i++){
+        cout << vec[i];
+        if(i < vec.size() -1) cout << ", ";
     }
     cout << endl;
+
 }
 
 // QUESION 4: 

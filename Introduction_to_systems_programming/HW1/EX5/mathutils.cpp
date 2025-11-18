@@ -3,8 +3,20 @@
 #include <vector>
 #include <numeric> 
 #include <cmath>
+using namespace std;
 
 namespace MathUtils {
+
+    //בדיקת ממוצע
+    double getAverage(vector<int>& numbers){
+        if(numbers.empty()) return 0.0;
+
+        int sum = 0;
+        for(int num : numbers){
+            sum += num;
+        }
+        return double(sum) / numbers.size();
+    }
 
     //מספרים ראשוניים
     bool isPrime(int num){
@@ -18,61 +30,49 @@ namespace MathUtils {
     }
 
     //בדיקת מספר מושלם
-    bool printPerfectNumbers(int num){
+    bool isPerfectNumber(int num){
         if(num <= 1) return false;
 
         int sum = 0;
 
-        for(int i = 0; i < num ; i++){
+        for(int i = 1; i < num; i++){ 
             if(num % i == 0){
                 sum += i;
             }
         }
-        return sum;
+        return sum == num;  
     }
 
-    //בדיקת ממוצע
-    double getAverage(const std::vector<int>& numbers){
-        if(numbers.empty()) return 0.0;
-
-        int sum = 0;
-        for(int num : numbers){
-            sum += num;
+    
+   void printPrimes(vector<int>& numbers){
+    bool foundPrime = false;  
+    for(int num : numbers){
+        if(isPrime(num)){
+            if(foundPrime) cout << ", ";
+            cout << num;
+            foundPrime = true;
         }
-        return double(sum) / numbers.size();
     }
-
-    void printPrimes(const std:: vector<int>& numbers){
-        std::cout <<"prime numbers: ";
-
-        bool foundPrime = false;
-        for(int num : numbers){
-            if(isPrime(num)){
-                if(foundPrime) std::cout <<",";
-                std::cout << num;
-                foundPrime = true;
-            }
-        }
-        if(!foundPrime){
-            std::cout<<"None";
-        }
-        std::cout << std::endl;
+    if(!foundPrime){
+        cout << "None";
     }
+    cout << endl;
+}
 
-    void printPerfectNumbers(const std::vector<int>& numbers) {
+    void printPerfectNumbers(vector<int>& numbers) {
         bool foundAny = false;
         for (int num : numbers) {
-            if (printPerfectNumbers(num)) {
+            if (isPerfectNumber(num)) {
                 if (foundAny) {
-                    std::cout << " ";
+                    cout << " ";
                 }
-                std::cout << num;
+                cout << num;
                 foundAny = true;
             }
         }
         if (!foundAny) {
-            std::cout << "None";
+            cout << "None";
         }
-        std::cout << std::endl;
+        cout << endl;
     }
 }
